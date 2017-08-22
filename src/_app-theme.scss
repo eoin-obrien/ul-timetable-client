@@ -2,7 +2,7 @@
 
 @include mat-core();
 
-$timetable-app-primary: mat-palette($mat-indigo);
+$timetable-app-primary: mat-palette($mat-purple, 700);
 $timetable-app-accent: mat-palette($mat-amber, A200, A100, A400);
 $timetable-app-warn: mat-palette($mat-red);
 
