@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+
+const STUDENT_ID_REGEX = /^\d{7,8}$/;
 
 @Component({
   selector: 'app-homepage',
@@ -6,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
+
+  studentId: string;
+
+  onSubmit() {
+    console.log('submitted');
+  }
 
   constructor() { }
 

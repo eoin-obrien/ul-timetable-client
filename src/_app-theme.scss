@@ -17,7 +17,7 @@ $warn: map-get($timetable-app-theme, warn);
 $background: map-get($timetable-app-theme, background);
 $foreground: map-get($timetable-app-theme, foreground);
 
-.timetable-app-background {
+body {
   background: mat-color($background, background);
 }
 

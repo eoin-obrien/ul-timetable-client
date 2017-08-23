@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import {
   MdToolbarModule,
   MdSidenavModule,
-  MdButtonModule
+  MdButtonModule,
+  MdInputModule,
+  MdCardModule,
 } from '@angular/material';
 
 @NgModule({
@@ -10,6 +12,8 @@ import {
     MdToolbarModule,
     MdSidenavModule,
     MdButtonModule,
+    MdInputModule,
+    MdCardModule,
   ],
 })
 export class MaterialModule { }
