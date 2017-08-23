@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-
-const STUDENT_ID_REGEX = /^\d{7,8}$/;
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -12,11 +10,12 @@ export class HomepageComponent implements OnInit {
 
   studentId: string;
 
-  onSubmit() {
-    console.log('submitted');
+  constructor(private router: Router) {
   }
 
-  constructor() { }
+  onSubmit() {
+    return this.router.navigate(['/timetable', this.studentId]);
+  }
 
   ngOnInit() {
   }
