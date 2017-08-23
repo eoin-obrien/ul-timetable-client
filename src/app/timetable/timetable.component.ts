@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
-  styleUrls: ['./timetable.component.css']
+  styleUrls: ['./timetable.component.scss']
 })
 export class TimetableComponent implements OnInit {
 

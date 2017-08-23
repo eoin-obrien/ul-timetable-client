@@ -1,0 +1,6 @@
+.app-content-container {
+}
+
+:host /deep/ router-outlet + * {
+  flex: 1 0 auto;
+}
