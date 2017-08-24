@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ApolloClient} from 'apollo-client';
+import {ApolloClient, createNetworkInterface} from 'apollo-client';
 import {ApolloModule} from 'apollo-angular';
 import 'hammerjs';
 
@@ -17,8 +17,13 @@ import {HomepageComponent} from './homepage/homepage.component';
 import {TimetableComponent} from './timetable/timetable.component';
 import {StudentIdValidatorDirective} from './shared/student-id-validator.directive';
 import {TimetableGuard} from './shared/timetable.guard';
+import {TimetableService} from './timetable.service';
 
-const client = new ApolloClient();
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: 'https://api.timetable.videtur.io/graphql'
+  }),
+});
 
 export function provideClient(): ApolloClient {
   return client;
@@ -43,7 +48,10 @@ export function provideClient(): ApolloClient {
     routing,
     ApolloModule.forRoot(provideClient),
   ],
-  providers: [TimetableGuard],
+  providers: [
+    TimetableGuard,
+    TimetableService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
