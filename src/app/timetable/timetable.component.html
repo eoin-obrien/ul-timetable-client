@@ -1,3 +1,30 @@
-<p>
-  timetable works!
-</p>
+<!--TODO progress bar while loading-->
+<!--TODO fixed cell height set in CSS-->
+<!--TODO style day names flush with the surface-->
+<!--TODO style times flush with the surface-->
+<!--TODO absolutely position lessons based on time since 09:00-->
+<!--TODO configure lesson height based on duration-->
+<!--TODO style lessons as material cards-->
+<!--TODO color lesson cards based on module-->
+<!--TODO extract lessons and days as separate components-->
+
+<div class="timetable">
+
+  <div class="timetable-times" fxFlex="10%">
+    <!--<li>Time</li>-->
+    <div *ngFor="let time of times" [ngStyle]="{'height': rowHeightPx + 'px'}">
+      {{time}}
+    </div>
+  </div>
+
+  <div class="timetable-day" *ngFor="let day of timetable?.toArray(); index as i" fxFlex>
+    <!--<span class="timetable-day-header">{{days[i]}}</span>-->
+    <div style="position: relative">
+      <div *ngFor="let lesson of day" style="position: absolute"
+          [ngStyle]="{'height': rowHeightPx * lesson.getDuration() + 'px', 'top': rowHeightPx * lesson.getOffsetFrom(times[0]) + 'px'}">
+        {{lesson.module._id}}
+      </div>
+    </div>
+  </div>
+
+</div>

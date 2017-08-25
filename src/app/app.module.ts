@@ -36,7 +36,7 @@ export function provideClient(): ApolloClient {
     FooterComponent,
     HomepageComponent,
     TimetableComponent,
-    StudentIdValidatorDirective
+    StudentIdValidatorDirective,
   ],
   imports: [
     BrowserModule,

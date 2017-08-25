@@ -31,9 +31,18 @@ export class Lesson {
     this.weeks = weeks.map(week => new Week(week));
   }
 
+  private static timeDifference(time1: string, time2: string): number {
+    const partsTime1 = time1.split(':');
+    const partsTime2 = time2.split(':');
+    return +partsTime2[0] - +partsTime1[0] + (+partsTime2[1] - +partsTime1[1]) / 60;
+  }
+
+  getOffsetFrom(time: string): number {
+    console.log(time, this.startTime, Lesson.timeDifference(time, this.startTime));
+    return Lesson.timeDifference(time, this.startTime);
+  }
+
   getDuration(): number {
-    const start = this.startTime.split(':');
-    const end = this.endTime.split(':');
-    return +end[0] - +start[0] + (+end[1] - +start[1]) / 60;
+    return Lesson.timeDifference(this.startTime, this.endTime);
   }
 }
