@@ -3,6 +3,7 @@ import {TimetableService} from '../timetable.service';
 import {ActivatedRoute} from '@angular/router';
 import {Timetable} from '../types/timetable';
 import {Week} from '../types/week';
+import {ModuleColorService} from '../module-color.service';
 
 @Component({
   selector: 'app-timetable',
@@ -15,7 +16,7 @@ export class TimetableComponent implements OnInit {
   timetable: Timetable;
   weeks: Week[];
   rowHeightPx = 64;
-
+  colors;
   days = [
     'Monday',
     'Tuesday',
@@ -43,17 +44,28 @@ export class TimetableComponent implements OnInit {
     '18:00',
   ];
 
-  constructor(private ts: TimetableService, private route: ActivatedRoute) {
+  constructor(private ts: TimetableService, private cs: ModuleColorService, private route: ActivatedRoute) {
+  }
+
+  getModules() {
+    const modules = [];
+    this.timetable.toArray().forEach(day => {
+      day.forEach(lesson => {
+        if (!modules.includes(lesson.module._id)) {
+          modules.push(lesson.module._id);
+        }
+      });
+    });
+    return modules;
   }
 
   getTimetable() {
     this.ts.getTimetable(this.studentId)
       .subscribe(({data}) => {
         this.loading = data.loading;
-        // TODO split timetable by week and display in tabs
         this.timetable = new Timetable(data.timetable);
-        console.log(this.timetable.toArray());
         this.weeks = data.weeks.map(week => new Week(week));
+        this.colors = this.cs.getColorMap(this.studentId, this.getModules());
       });
   }
 

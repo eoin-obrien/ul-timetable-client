@@ -43,7 +43,10 @@
       </md-grid-tile>
     </md-grid-list>
 
-    <app-timetable-column *ngFor="let day of timetable.toArray()" [lessons]="day" style="width: 20%"></app-timetable-column>
+    <app-timetable-column *ngFor="let day of timetable.toArray()"
+                          [lessons]="day"
+                          [moduleColors]="colors"
+                          style="width: 20%"></app-timetable-column>
 
   </div>
 
@@ -70,7 +73,7 @@
           </md-grid-tile>
         </md-grid-list>
 
-        <app-timetable-column [lessons]="day" style="width: 100%"></app-timetable-column>
+        <app-timetable-column [lessons]="day" [moduleColors]="colors" style="width: 100%"></app-timetable-column>
 
       </div>
 

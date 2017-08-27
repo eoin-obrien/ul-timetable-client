@@ -1,7 +1,8 @@
 <md-grid-list class="timetable-column"
               cols="1"
               gutterSize="8px"
-              rowHeight="92px" fxFlex="">
+              rowHeight="92px"
+              fxFlex="">
   <ng-template ngFor let-lesson [ngForOf]="lessons" let-i="index">
     <md-grid-tile class="timetable-cell timetable-cell--empty"
                   *ngIf="lesson.getOffsetFrom(i === 0 ? '09:00' : lessons[i - 1].endTime) > 0"
@@ -11,7 +12,10 @@
     <md-grid-tile class="timetable-cell"
                   colspan="1"
                   [rowspan]="lesson.getDuration()">
-      <div class="cell-bar" fxLayoutAlign="center center" [ngSwitch]="lesson.type">
+      <div class="cell-bar"
+           fxLayoutAlign="center center"
+           [ngSwitch]="lesson.type"
+           [ngStyle]="{'background-color': moduleColors[lesson.module._id]}">
         <md-icon *ngSwitchCase="'TUT'" svgIcon="tutorial"></md-icon>
         <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture"></md-icon>
         <md-icon *ngSwitchCase="'LAB'" svgIcon="lab"></md-icon>
