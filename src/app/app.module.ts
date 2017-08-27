@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import {FlexLayoutModule, MediaQueriesModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApolloClient, createNetworkInterface} from 'apollo-client';
 import {ApolloModule} from 'apollo-angular';
@@ -46,6 +46,7 @@ export function provideClient(): ApolloClient {
     BrowserAnimationsModule,
     HttpModule,
     FlexLayoutModule,
+    MediaQueriesModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,

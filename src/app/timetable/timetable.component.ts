@@ -15,12 +15,20 @@ export class TimetableComponent implements OnInit {
   timetable: Timetable;
   weeks: Week[];
   rowHeightPx = 64;
+
   days = [
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
+  ];
+  shortDays = [
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
   ];
   times = [
     '09:00',

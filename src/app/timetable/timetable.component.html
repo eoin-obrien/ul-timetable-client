@@ -8,7 +8,7 @@
 <!--TODO color lesson cards based on module-->
 <!--TODO extract lessons and days as separate components-->
 
-<div fxLayout="column" *ngIf="timetable">
+<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm>
 
   <div class="timetable-header" fxLayout="row">
     <md-grid-list cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
@@ -48,24 +48,31 @@
 
 </div>
 
-<!--<div class="timetable">-->
+<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.lt-md>
 
-  <!--<div class="timetable-times" fxFlex="10%">-->
-    <!--&lt;!&ndash;<li>Time</li>&ndash;&gt;-->
-    <!--<div *ngFor="let time of times" [ngStyle]="{'height': rowHeightPx + 'px'}">-->
-      <!--{{time}}-->
-    <!--</div>-->
-  <!--</div>-->
 
-  <!--<div class="timetable-day" *ngFor="let day of timetable?.toArray(); index as i" fxFlex>-->
-    <!--&lt;!&ndash;<span class="timetable-day-header">{{days[i]}}</span>&ndash;&gt;-->
-    <!--<div style="position: relative">-->
-      <!--<div *ngFor="let lesson of day" style="position: absolute; width: 100%"-->
-           <!--class="mat-elevation-z2"-->
-          <!--[ngStyle]="{'height': rowHeightPx * lesson.getDuration() + 'px', 'top': rowHeightPx * lesson.getOffsetFrom(times[0]) + 'px'}">-->
-        <!--{{lesson.module.name}}-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+  <md-tab-group>
+    <md-tab *ngFor="let day of timetable.toArray(); let i = index" [label]="shortDays[i]">
 
-<!--</div>-->
+      <div class="timetable-body" fxLayout="row">
+
+        <md-grid-list cols="1"
+                      gutterSize="8px"
+                      rowHeight="92px"
+                      fxFlex="72px">
+          <md-grid-tile
+            *ngFor="let time of times"
+            colspan="1"
+            rowspan="1">
+            <span class="mat-typography mat-card-subtitle">{{time}}</span>
+          </md-grid-tile>
+        </md-grid-list>
+
+        <app-timetable-column [lessons]="day" style="width: 100%"></app-timetable-column>
+
+      </div>
+
+    </md-tab>
+  </md-tab-group>
+
+</div>
