@@ -5,8 +5,10 @@ $cell-bar-radius: 4px;
   height: auto !important;
 }
 
-.container {
+.timetable-cell__body {
   height: 100%;
+  text-align: center;
+  position: relative;
 }
 
 .timetable-cell__button {

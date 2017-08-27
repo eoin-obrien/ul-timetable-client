@@ -21,6 +21,7 @@ import {TimetableGuard} from './shared/timetable.guard';
 import {TimetableService} from './timetable.service';
 import {TimetableColumnComponent} from './timetable-column/timetable-column.component';
 import {ModuleColorService} from './module-color.service';
+import { LessonInfoDialogComponent } from './lesson-info-dialog/lesson-info-dialog.component';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -41,7 +42,9 @@ export function provideClient(): ApolloClient {
     TimetableComponent,
     StudentIdValidatorDirective,
     TimetableColumnComponent,
+    LessonInfoDialogComponent,
   ],
+  entryComponents: [LessonInfoDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

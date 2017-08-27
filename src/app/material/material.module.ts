@@ -9,6 +9,7 @@ import {
   MdIconModule,
   MdTabsModule,
   MdTooltipModule,
+  MdDialogModule,
 } from '@angular/material';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {
     MdIconModule,
     MdTabsModule,
     MdTooltipModule,
+    MdDialogModule,
   ],
 })
 export class MaterialModule { }
