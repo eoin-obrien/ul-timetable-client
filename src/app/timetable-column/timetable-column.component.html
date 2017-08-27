@@ -1,0 +1,34 @@
+<md-grid-list class="timetable-column"
+              cols="1"
+              gutterSize="8px"
+              rowHeight="92px" fxFlex="">
+  <ng-template ngFor let-lesson [ngForOf]="lessons" let-i="index">
+    <md-grid-tile class="timetable-cell timetable-cell--empty"
+                  *ngIf="lesson.getOffsetFrom(i === 0 ? '09:00' : lessons[i - 1].endTime) > 0"
+                  colspan="1"
+                  [rowspan]="lesson.getOffsetFrom(i === 0 ? '09:00' : lessons[i - 1].endTime)">
+    </md-grid-tile>
+    <md-grid-tile class="timetable-cell"
+                  colspan="1"
+                  [rowspan]="lesson.getDuration()">
+      <div class="cell-bar" fxLayoutAlign="center center" [ngSwitch]="lesson.type">
+        <md-icon *ngSwitchCase="'TUT'" svgIcon="tutorial"></md-icon>
+        <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture"></md-icon>
+        <md-icon *ngSwitchCase="'LAB'" svgIcon="lab"></md-icon>
+      </div>
+      <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center">
+        <div class="float-bottom">
+          <span class="mat-typography mat-card-subtitle">{{lesson.module._id}}</span>
+        </div>
+        {{lesson.module.name}}
+        <div class="float-top">
+
+        </div>
+        <div class="float-bottom">
+          <span class="mat-typography mat-card-subtitle" *ngFor="let room of lesson.rooms; let last = last">{{room._id}}<span
+            *ngIf="!last">&nbsp;</span></span>
+        </div>
+      </div>
+    </md-grid-tile>
+  </ng-template>
+</md-grid-list>

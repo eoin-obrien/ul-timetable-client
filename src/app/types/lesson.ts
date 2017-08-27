@@ -38,7 +38,6 @@ export class Lesson {
   }
 
   getOffsetFrom(time: string): number {
-    console.log(time, this.startTime, Lesson.timeDifference(time, this.startTime));
     return Lesson.timeDifference(time, this.startTime);
   }
 
