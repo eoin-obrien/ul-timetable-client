@@ -10,16 +10,16 @@
 
 <div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm>
 
-  <div class="timetable-header" fxLayout="row">
-    <md-grid-list cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
-      <md-grid-tile class="header-tile"
+  <div class="mat-tab-nav-bar">
+    <md-grid-list class="mat-tab-list" cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
+      <md-grid-tile class="mat-tab-link"
                     colspan="1"
                     rowspan="1">
       </md-grid-tile>
     </md-grid-list>
 
-    <md-grid-list cols="5" rowHeight="56px" gutterSize="0px" fxFlex>
-      <md-grid-tile class="header-tile"
+    <md-grid-list class="mat-tab-list" cols="5" rowHeight="56px" gutterSize="0px" fxFlex>
+      <md-grid-tile class="mat-tab-link"
                     *ngFor="let day of days"
                     colspan="1"
                     rowspan="1">
@@ -30,7 +30,8 @@
 
   <div class="timetable-body" fxLayout="row">
 
-    <md-grid-list cols="1"
+    <md-grid-list class="time-column"
+                  cols="1"
                   gutterSize="8px"
                   rowHeight="92px"
                   fxFlex="72px">
@@ -38,7 +39,7 @@
         *ngFor="let time of times"
         colspan="1"
         rowspan="1">
-        <span class="mat-typography mat-card-subtitle">{{time}}</span>
+        {{time}}
       </md-grid-tile>
     </md-grid-list>
 
@@ -56,7 +57,8 @@
 
       <div class="timetable-body" fxLayout="row">
 
-        <md-grid-list cols="1"
+        <md-grid-list class="time-column"
+                      cols="1"
                       gutterSize="8px"
                       rowHeight="92px"
                       fxFlex="72px">
@@ -64,7 +66,7 @@
             *ngFor="let time of times"
             colspan="1"
             rowspan="1">
-            <span class="mat-typography mat-card-subtitle">{{time}}</span>
+            {{time}}
           </md-grid-tile>
         </md-grid-list>
 

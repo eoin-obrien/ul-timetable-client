@@ -1,9 +1,7 @@
-.header-tile {
-  background-color: transparent;
-  color: white;
+.time-column {
+  margin: 12px 0;
 }
-
-.timetable-header {
-  background-color: slategrey;
-  margin-bottom: 12px;
+.time-column, app-timetable-column {
+  padding: 12px 0;
+  border-left: thin lightgray solid;
 }
