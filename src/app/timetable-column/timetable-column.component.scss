@@ -5,7 +5,17 @@ $cell-bar-radius: 4px;
   height: auto !important;
 }
 
-.cell-bar {
+.container {
+  height: 100%;
+}
+
+.timetable-cell__button {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.timetable-cell__sidebar {
   color: white;
   width: $cell-bar-width;
   border-top-right-radius: $cell-bar-radius;

@@ -12,7 +12,7 @@
     <md-grid-tile class="timetable-cell"
                   colspan="1"
                   [rowspan]="lesson.getDuration()">
-      <div class="cell-bar"
+      <div class="timetable-cell__sidebar"
            fxLayoutAlign="center center"
            [ngSwitch]="lesson.type"
            [ngStyle]="{'background-color': moduleColors[lesson.module._id]}">
@@ -20,18 +20,17 @@
         <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture" mdTooltip="Lecture"></md-icon>
         <md-icon *ngSwitchCase="'LAB'" svgIcon="lab" mdTooltip="Lab"></md-icon>
       </div>
-      <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center">
+      <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center; position: relative">
         <div class="float-bottom">
           <span class="mat-typography mat-card-subtitle">{{lesson.module._id}}</span>
         </div>
         {{lesson.module.name}}
-        <div class="float-top">
-
-        </div>
         <div class="float-bottom">
-          <span class="mat-typography mat-card-subtitle" *ngFor="let room of lesson.rooms; let last = last">{{room._id}}<span
-            *ngIf="!last">&nbsp;</span></span>
+        <span class="mat-typography mat-card-subtitle"
+              *ngFor="let room of lesson.rooms; let last = last">{{room._id}}<span
+          *ngIf="!last">&nbsp;</span></span>
         </div>
+        <button md-button class="timetable-cell__button"></button>
       </div>
     </md-grid-tile>
   </ng-template>
