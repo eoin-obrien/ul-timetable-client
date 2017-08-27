@@ -16,9 +16,9 @@
            fxLayoutAlign="center center"
            [ngSwitch]="lesson.type"
            [ngStyle]="{'background-color': moduleColors[lesson.module._id]}">
-        <md-icon *ngSwitchCase="'TUT'" svgIcon="tutorial"></md-icon>
-        <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture"></md-icon>
-        <md-icon *ngSwitchCase="'LAB'" svgIcon="lab"></md-icon>
+        <md-icon *ngSwitchCase="'TUT'" svgIcon="tutorial" mdTooltip="Tutorial"></md-icon>
+        <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture" mdTooltip="Lecture"></md-icon>
+        <md-icon *ngSwitchCase="'LAB'" svgIcon="lab" mdTooltip="Lab"></md-icon>
       </div>
       <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center">
         <div class="float-bottom">

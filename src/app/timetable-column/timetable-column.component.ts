@@ -8,12 +8,12 @@ import {Lesson} from '../types/lesson';
 })
 export class TimetableColumnComponent implements OnInit {
   @Input() lessons: Lesson[];
-  @Input() moduleColors: {[key: string]: string};
+  @Input() moduleColors: { [key: string]: string };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    console.log(this.moduleColors);
   }
 
 }

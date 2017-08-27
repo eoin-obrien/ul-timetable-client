@@ -8,6 +8,7 @@ import {
   MdGridListModule,
   MdIconModule,
   MdTabsModule,
+  MdTooltipModule,
 } from '@angular/material';
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
     MdGridListModule,
     MdIconModule,
     MdTabsModule,
+    MdTooltipModule,
   ],
 })
 export class MaterialModule { }
