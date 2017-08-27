@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -41,6 +42,7 @@ export function provideClient(): ApolloClient {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     FlexLayoutModule,
     MaterialModule,
     FormsModule,

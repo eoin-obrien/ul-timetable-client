@@ -21,7 +21,6 @@ export class TimetableComponent implements OnInit {
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday',
   ];
   times = [
     '09:00',

@@ -5,6 +5,8 @@ import {
   MdButtonModule,
   MdInputModule,
   MdCardModule,
+  MdGridListModule,
+  MdIconModule,
 } from '@angular/material';
 
 @NgModule({
@@ -14,6 +16,8 @@ import {
     MdButtonModule,
     MdInputModule,
     MdCardModule,
+    MdGridListModule,
+    MdIconModule,
   ],
 })
 export class MaterialModule { }

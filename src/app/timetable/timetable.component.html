@@ -8,23 +8,99 @@
 <!--TODO color lesson cards based on module-->
 <!--TODO extract lessons and days as separate components-->
 
-<div class="timetable">
+<div fxLayout="column" *ngIf="timetable">
 
-  <div class="timetable-times" fxFlex="10%">
-    <!--<li>Time</li>-->
-    <div *ngFor="let time of times" [ngStyle]="{'height': rowHeightPx + 'px'}">
-      {{time}}
-    </div>
+  <div class="timetable-header" fxLayout="row">
+    <md-grid-list cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
+      <md-grid-tile class="header-tile"
+                    colspan="1"
+                    rowspan="1">
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list cols="5" rowHeight="56px" gutterSize="0px" fxFlex>
+      <md-grid-tile class="header-tile"
+                    *ngFor="let day of days"
+                    colspan="1"
+                    rowspan="1">
+        {{day}}
+      </md-grid-tile>
+    </md-grid-list>
   </div>
 
-  <div class="timetable-day" *ngFor="let day of timetable?.toArray(); index as i" fxFlex>
-    <!--<span class="timetable-day-header">{{days[i]}}</span>-->
-    <div style="position: relative">
-      <div *ngFor="let lesson of day" style="position: absolute"
-          [ngStyle]="{'height': rowHeightPx * lesson.getDuration() + 'px', 'top': rowHeightPx * lesson.getOffsetFrom(times[0]) + 'px'}">
-        {{lesson.module._id}}
-      </div>
-    </div>
+  <div class="timetable-body" fxLayout="row">
+
+    <md-grid-list cols="1"
+                  gutterSize="8px"
+                  rowHeight="92px"
+                  fxFlex="72px">
+      <md-grid-tile
+        *ngFor="let time of times"
+        colspan="1"
+        rowspan="1">
+        <span class="mat-typography mat-card-subtitle">{{time}}</span>
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list class="timetable-column"
+                  cols="1"
+                  gutterSize="8px"
+                  rowHeight="92px"
+                  *ngFor="let day of timetable?.toArray(); let i = index"
+                  fxFlex>
+      <ng-template ngFor let-time [ngForOf]="day" let-j="index">
+        <!--TODO get offset from previous end time with times[0] as backup-->
+        <md-grid-tile class="timetable-cell timetable-cell--empty"
+          *ngIf="time.getOffsetFrom(j === 0 ? times[0] : day[j - 1].endTime) > 0"
+          colspan="1"
+          [rowspan]="time.getOffsetFrom(j === 0 ? times[0] : day[j - 1].endTime)">
+        </md-grid-tile>
+        <md-grid-tile class="timetable-cell"
+          colspan="1"
+          [rowspan]="time.getDuration()">
+          <div class="cell-bar" fxLayoutAlign="center center" [ngSwitch]="time.type">
+            <md-icon *ngSwitchCase="'TUT'" svgIcon="tutorial"></md-icon>
+            <md-icon *ngSwitchCase="'LEC'" svgIcon="lecture"></md-icon>
+            <md-icon *ngSwitchCase="'LAB'" svgIcon="lab"></md-icon>
+          </div>
+          <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center">
+            <div class="float-bottom">
+              <span class="mat-typography mat-card-subtitle">{{time.module._id}}</span>
+            </div>
+              {{time.module.name}}
+            <div class="float-top">
+
+            </div>
+            <div class="float-bottom">
+              <span class="mat-typography mat-card-subtitle" *ngFor="let room of time.rooms; let last = last">{{room._id}}<span *ngIf="!last">&nbsp;</span></span>
+            </div>
+          </div>
+        </md-grid-tile>
+      </ng-template>
+    </md-grid-list>
+
   </div>
 
 </div>
+
+<!--<div class="timetable">-->
+
+  <!--<div class="timetable-times" fxFlex="10%">-->
+    <!--&lt;!&ndash;<li>Time</li>&ndash;&gt;-->
+    <!--<div *ngFor="let time of times" [ngStyle]="{'height': rowHeightPx + 'px'}">-->
+      <!--{{time}}-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="timetable-day" *ngFor="let day of timetable?.toArray(); index as i" fxFlex>-->
+    <!--&lt;!&ndash;<span class="timetable-day-header">{{days[i]}}</span>&ndash;&gt;-->
+    <!--<div style="position: relative">-->
+      <!--<div *ngFor="let lesson of day" style="position: absolute; width: 100%"-->
+           <!--class="mat-elevation-z2"-->
+          <!--[ngStyle]="{'height': rowHeightPx * lesson.getDuration() + 'px', 'top': rowHeightPx * lesson.getOffsetFrom(times[0]) + 'px'}">-->
+        <!--{{lesson.module.name}}-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->

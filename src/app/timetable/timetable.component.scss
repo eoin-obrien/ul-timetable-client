@@ -1,3 +1,32 @@
-ul {
-  list-style-type: none;
+$cell-bar-width: 32px;
+$cell-bar-radius: 4px;
+
+.header-tile {
+  background-color: transparent;
+  color: white;
+}
+
+.timetable-header {
+  background-color: slategrey;
+  margin-bottom: 12px;
+}
+
+.timetable-column {
+  height: auto !important;
+  border-left: thin lightgray solid;
+}
+
+//.timetable-cell:not(.timetable-cell--empty) {
+//  &:hover {
+//    background-color: lightgray;
+//  }
+//}
+
+.cell-bar {
+  color: white;
+  background-color: crimson;
+  width: $cell-bar-width;
+  border-top-right-radius: $cell-bar-radius;
+  border-bottom-right-radius: $cell-bar-radius;
+  height: 100%;
 }
