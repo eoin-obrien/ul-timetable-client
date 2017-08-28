@@ -1,6 +1,6 @@
 <div fxFlex fxLayoutAlign="center center">
-  <form (ngSubmit)="onSubmit()" #studentIdForm="ngForm">
-    <md-card fxFlex="512px">
+  <form (ngSubmit)="onSubmit()" #studentIdForm="ngForm" autocomplete="off">
+    <md-card class="mat-elevation-z6" fxFlex.gt-sm="512px">
       <md-card-title>UL Timetable</md-card-title>
       <md-card-subtitle>Enter your student ID to get started</md-card-subtitle>
       <md-card-content>

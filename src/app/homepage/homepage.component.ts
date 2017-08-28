@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit() {
-    return this.router.navigate(['/timetable', this.studentId]);
+    return this.router.navigate(['/timetable', {id: this.studentId}]);
   }
 
   ngOnInit() {

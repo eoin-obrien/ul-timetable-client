@@ -6,7 +6,7 @@ import {TimetableGuard} from './shared/timetable.guard';
 
 const APP_ROUTES: Routes = [
   {path: '', component: HomepageComponent, pathMatch: 'full'},
-  {path: 'timetable/:id', component: TimetableComponent, canActivate: [TimetableGuard]},
+  {path: 'timetable', component: TimetableComponent, canActivate: [TimetableGuard]},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
