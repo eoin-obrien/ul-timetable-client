@@ -6,6 +6,16 @@
   border-left: thin lightgray solid;
 }
 
-.timetable-page-header {
-  padding: 32px;
+.pagination-button--back {
+  position: absolute;
+  margin-left: 16px;
+  left: 0;
+
+}
+
+.pagination-button--forward {
+  position: absolute;
+  margin-right: 16px;
+  right: 0;
+
 }

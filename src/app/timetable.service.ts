@@ -2,11 +2,10 @@ import {Injectable} from '@angular/core';
 import {Apollo, ApolloQueryObservable} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {ITimetable} from './types/timetable';
-import {IWeek} from './types/week';
 
 const TimetableQuery = gql`
-  query TimetableQuery($studentId: ID!) {
-    timetable(_id: $studentId) {
+  query TimetableQuery($studentId: ID!, $weekId: String!) {
+    timetable(_id: $studentId, week: $weekId) {
       _id
       monday {
         ...lessonFields
@@ -26,11 +25,6 @@ const TimetableQuery = gql`
       saturday {
         ...lessonFields
       }
-    }
-    weeks {
-      _id
-      name
-      date
     }
   }
 
@@ -58,8 +52,6 @@ const TimetableQuery = gql`
 
 interface QueryResponse {
   timetable: ITimetable;
-  weeks: IWeek[];
-  loading: boolean;
 }
 
 @Injectable()
@@ -67,11 +59,12 @@ export class TimetableService {
   constructor(private apollo: Apollo) {
   }
 
-  getTimetable(id: string): ApolloQueryObservable<QueryResponse> {
+  getTimetable(studentId: string, weekId: string): ApolloQueryObservable<QueryResponse> {
     return this.apollo.watchQuery<QueryResponse>({
       query: TimetableQuery,
       variables: {
-        studentId: id,
+        studentId,
+        weekId,
       }
     });
   }
