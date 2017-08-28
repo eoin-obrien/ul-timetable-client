@@ -1,0 +1,17 @@
+<h1 md-dialog-title>{{day}}, {{lesson.startTime}} - {{lesson.endTime}}</h1>
+<div md-dialog-content>
+  <p><strong>Module:</strong> {{lesson.module._id}} - {{lesson.module.name}}</p>
+  <p *ngIf="lesson.type === 'LEC'"><strong>Type:</strong> Lecture</p>
+  <p *ngIf="lesson.type === 'TUT'"><strong>Type:</strong> Tutorial</p>
+  <p *ngIf="lesson.type === 'LAB'"><strong>Type:</strong> Lab</p>
+  <p *ngIf="lesson.group"><strong>Group:</strong> {{lesson.group}}</p>
+  <p><strong *ngIf="lesson.rooms.length === 1">Room:</strong><strong *ngIf="lesson.rooms.length !== 1">Rooms:</strong>
+    <ng-template ngFor let-room [ngForOf]="lesson.rooms" let-last="last">
+      <span>{{room._id}} ({{room.building}}, floor {{room.floor}})</span>
+      <span *ngIf="!last">,&nbsp;</span>
+    </ng-template>
+  </p>
+</div>
+<div md-dialog-actions>
+  <button md-button md-dialog-close fxFlex>Close</button>
+</div>
