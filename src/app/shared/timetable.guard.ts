@@ -19,7 +19,7 @@ export class TimetableGuard implements CanActivate {
         return true;
       } else {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([`/timetable/${route.params.id}`]);
+        this.router.navigate(['/timetable/', {id: route.paramMap.get('id')}]);
         return false;
       }
     } else {

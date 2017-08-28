@@ -9,14 +9,14 @@
 
   <md-toolbar color="primary" fxFlex>
     <a md-icon-button class="pagination-button--back" *ngIf="weekIndex - 1 >= 0"
-       [routerLink]="['/timetable/' + studentId + '/' + weeks[weekIndex - 1]._id]">
+       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
       <md-icon>arrow_back</md-icon>
     </a>
     <span fxFlex></span>
     <span>{{week.name}}</span>
     <span fxFlex></span>
     <a md-icon-button class="pagination-button--forward" *ngIf="weekIndex + 1 < weeks.length"
-       [routerLink]="['/timetable/' + studentId + '/' + weeks[weekIndex + 1]._id]">
+       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
       <md-icon>arrow_forward</md-icon>
     </a>
   </md-toolbar>
@@ -68,14 +68,14 @@
 
   <md-toolbar color="primary" fxFlex>
     <a md-icon-button class="pagination-button--back" *ngIf="weekIndex - 1 >= 0"
-       [routerLink]="['/timetable/' + studentId + '/' + weeks[weekIndex - 1]._id]">
+       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
       <md-icon>arrow_back</md-icon>
     </a>
     <span fxFlex></span>
     <span>{{week.name}}</span>
     <span fxFlex></span>
     <a md-icon-button class="pagination-button--forward" *ngIf="weekIndex + 1 < weeks.length"
-       [routerLink]="['/timetable/' + studentId + '/' + weeks[weekIndex + 1]._id]">
+       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
       <md-icon>arrow_forward</md-icon>
     </a>
   </md-toolbar>

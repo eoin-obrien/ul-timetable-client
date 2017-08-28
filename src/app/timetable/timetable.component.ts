@@ -76,7 +76,7 @@ export class TimetableComponent implements OnInit {
       });
       if (!this.week) {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([`/timetable/${this.studentId}`]);
+        this.router.navigate(['/timetable', {id: this.studentId}]);
       }
       this.weekIndex = lastIndex;
     } else {
