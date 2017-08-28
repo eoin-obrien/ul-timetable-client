@@ -1,8 +1,11 @@
-<!--TODO progress bar while loading-->
 <!--TODO extract grid dimensions as template variables-->
 <!--TODO week selection-->
 
-<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm>
+<div *ngIf="!timetable" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+  <md-spinner></md-spinner>
+</div>
+
+<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm fxFlex>
 
   <div class="timetable-page-header">
     <span class="mat-display-1">{{studentId}}</span>
@@ -51,8 +54,8 @@
 
 </div>
 
-<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.lt-md>
-  
+<div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.lt-md fxFlex>
+
   <div class="timetable-page-header">
     <span class="mat-display-1">{{studentId}}</span>
   </div>

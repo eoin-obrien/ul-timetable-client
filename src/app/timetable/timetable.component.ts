@@ -12,7 +12,6 @@ import {ModuleColorService} from '../module-color.service';
 })
 export class TimetableComponent implements OnInit {
   studentId: string;
-  loading = true;
   timetable: Timetable;
   weeks: Week[];
   rowHeightPx = 64;
@@ -62,7 +61,6 @@ export class TimetableComponent implements OnInit {
   getTimetable() {
     this.ts.getTimetable(this.studentId)
       .subscribe(({data}) => {
-        this.loading = data.loading;
         this.timetable = new Timetable(data.timetable);
         this.weeks = data.weeks.map(week => new Week(week));
         this.colors = this.cs.getColorMap(this.studentId, this.getModules());

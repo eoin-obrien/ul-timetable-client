@@ -11,6 +11,7 @@ import {
   MdTooltipModule,
   MdDialogModule,
   MdSelectModule,
+  MdProgressSpinnerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -26,6 +27,7 @@ import {
     MdTooltipModule,
     MdDialogModule,
     MdSelectModule,
+    MdProgressSpinnerModule,
   ],
 })
 export class MaterialModule { }
