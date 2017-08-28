@@ -7,7 +7,7 @@
   <p *ngIf="lesson.group"><strong>Group:</strong> {{lesson.group}}</p>
   <p><strong *ngIf="lesson.rooms.length === 1">Room:</strong><strong *ngIf="lesson.rooms.length !== 1">Rooms:</strong>
     <ng-template ngFor let-room [ngForOf]="lesson.rooms" let-last="last">
-      <span>{{room._id}} ({{room.building}}, floor {{room.floor}})</span>
+      <span>{{room._id}} ({{room.building}}, Floor {{room.floor}})</span>
       <span *ngIf="!last">,&nbsp;</span>
     </ng-template>
   </p>
