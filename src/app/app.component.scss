@@ -1,4 +1,5 @@
-.app-content-container {
+app-navbar {
+  z-index: 999;
 }
 
 :host /deep/ router-outlet + * {

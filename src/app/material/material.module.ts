@@ -10,6 +10,7 @@ import {
   MdTabsModule,
   MdTooltipModule,
   MdDialogModule,
+  MdSelectModule,
 } from '@angular/material';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {
     MdTabsModule,
     MdTooltipModule,
     MdDialogModule,
+    MdSelectModule,
   ],
 })
 export class MaterialModule { }

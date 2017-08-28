@@ -1,14 +1,12 @@
 <!--TODO progress bar while loading-->
-<!--TODO fixed cell height set in CSS-->
-<!--TODO style day names flush with the surface-->
-<!--TODO style times flush with the surface-->
-<!--TODO absolutely position lessons based on time since 09:00-->
-<!--TODO configure lesson height based on duration-->
-<!--TODO style lessons as material cards-->
-<!--TODO color lesson cards based on module-->
-<!--TODO extract lessons and days as separate components-->
+<!--TODO extract grid dimensions as template variables-->
+<!--TODO week selection-->
 
 <div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm>
+
+  <div class="timetable-page-header">
+    <span class="mat-display-1">{{studentId}}</span>
+  </div>
 
   <div class="mat-tab-nav-bar">
     <md-grid-list class="mat-tab-list" cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
@@ -54,7 +52,10 @@
 </div>
 
 <div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.lt-md>
-
+  
+  <div class="timetable-page-header">
+    <span class="mat-display-1">{{studentId}}</span>
+  </div>
 
   <md-tab-group>
     <md-tab *ngFor="let day of timetable.toArray(); let i = index" [label]="shortDays[i]">
@@ -74,7 +75,8 @@
           </md-grid-tile>
         </md-grid-list>
 
-        <app-timetable-column [day]="this.days[i]" [lessons]="day" [moduleColors]="colors" style="width: 100%"></app-timetable-column>
+        <app-timetable-column [day]="this.days[i]" [lessons]="day" [moduleColors]="colors"
+                              style="width: 100%"></app-timetable-column>
 
       </div>
 
