@@ -1,0 +1,26 @@
+<div fxFlex fxLayoutAlign="center center">
+  <form (ngSubmit)="onSubmit()" #studentIdForm="ngForm" autocomplete="off">
+    <md-card class="mat-elevation-z6" fxFlex.gt-sm="512px">
+      <md-card-title>UL Timetable</md-card-title>
+      <md-card-subtitle>Enter your student ID to get started</md-card-subtitle>
+      <md-card-content>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Student ID"
+                 required appStudentIdValidator
+                 [(ngModel)]="studentId"
+                 name="studentId"
+                 #studentIdControl="ngModel">
+          <md-error *ngIf="studentIdControl.hasError('pattern')">
+            Please enter a valid student ID
+          </md-error>
+          <md-error *ngIf="studentIdControl.hasError('required')">
+            Student ID is <strong>required</strong>
+          </md-error>
+        </md-input-container>
+      </md-card-content>
+      <md-card-actions fxLayoutAlign="center">
+        <button md-raised-button color="primary" fxFlex [disabled]="!studentIdForm.form.valid">Go</button>
+      </md-card-actions>
+    </md-card>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+app-navbar {
+  z-index: 999;
+}
+
+router-outlet {
+}
+
+:host /deep/ router-outlet + * {
+  flex: 1 0 auto;
+}

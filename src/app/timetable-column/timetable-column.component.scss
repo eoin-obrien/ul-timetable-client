@@ -1,0 +1,26 @@
+$cell-bar-width: 32px;
+$cell-bar-radius: 4px;
+
+.timetable-column {
+  height: auto !important;
+}
+
+.timetable-cell__body {
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.timetable-cell__button {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.timetable-cell__sidebar {
+  color: white;
+  width: $cell-bar-width;
+  border-top-right-radius: $cell-bar-radius;
+  border-bottom-right-radius: $cell-bar-radius;
+  height: 100%;
+}

@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import './app/footer/footer-theme';
+@import './app/timetable/timetable-theme';
+
+@include mat-core();
+
+$timetable-app-primary: mat-palette($mat-pink, 900);
+$timetable-app-accent: mat-palette($mat-indigo, 700);
+$timetable-app-warn: mat-palette($mat-red);
+
+$timetable-app-theme: mat-light-theme($timetable-app-primary, $timetable-app-accent, $timetable-app-warn);
+
+@include angular-material-theme($timetable-app-theme);
+
+$primary: map-get($timetable-app-theme, primary);
+$accent: map-get($timetable-app-theme, accent);
+$warn: map-get($timetable-app-theme, warn);
+$background: map-get($timetable-app-theme, background);
+$foreground: map-get($timetable-app-theme, foreground);
+
+body {
+  background: mat-color($background, background);
+}
+
+.timetable-primary-header {
+  background: mat-color($primary);
+
+  h1 {
+    color: mat-color($primary, default-contrast);
+  }
+}
+
+.timetable-footer {
+  background: mat-color($primary);
+  color: mat-color($primary, default-contrast);
+}
+
+@include footer-theme($timetable-app-theme);
+@include timetable-theme($timetable-app-theme);
