@@ -24,3 +24,15 @@ $cell-bar-radius: 4px;
   border-bottom-right-radius: $cell-bar-radius;
   height: 100%;
 }
+
+.timetable-cell__row {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.timetable-cell__subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+}

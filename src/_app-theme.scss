@@ -1,6 +1,7 @@
 @import '~@angular/material/theming';
 @import './app/footer/footer-theme';
 @import './app/timetable/timetable-theme';
+@import './app/timetable-column/timetable-column-theme';
 
 @include mat-core();
 
@@ -37,3 +38,4 @@ body {
 
 @include footer-theme($timetable-app-theme);
 @include timetable-theme($timetable-app-theme);
+@include timetable-column-theme($timetable-app-theme);
