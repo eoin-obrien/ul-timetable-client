@@ -9,6 +9,7 @@ $cell-bar-radius: 4px;
   height: 100%;
   text-align: center;
   position: relative;
+  padding: 0 4px;
 }
 
 .timetable-cell__button {
@@ -26,13 +27,16 @@ $cell-bar-radius: 4px;
 }
 
 .timetable-cell__row {
-  display: flex;
   align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  //noinspection CssInvalidPropertyValue
+  word-break: break-word;
 }
 
 .timetable-cell__subtitle {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   margin-bottom: 0;
 }
