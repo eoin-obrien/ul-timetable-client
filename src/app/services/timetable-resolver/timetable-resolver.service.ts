@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
-import {WeekService} from '../week.service';
-import {Week} from '../types/week';
-import {Timetable} from '../types/timetable';
-import {TimetableService} from '../timetable.service';
+import {WeekService} from '../week/week.service';
+import {Week} from '../../types/week';
+import {Timetable} from '../../types/timetable';
+import {TimetableService} from '../timetable/timetable.service';
 
 interface TimetableData {
   studentId: string;

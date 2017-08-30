@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Timetable} from '../types/timetable';
-import {Week} from '../types/week';
-import {ModuleColorService} from '../module-color.service';
+import {Timetable} from '../../types/timetable';
+import {Week} from '../../types/week';
+import {ModuleColorService} from '../../services/module-color/module-color.service';
 
 @Component({
   selector: 'app-timetable',

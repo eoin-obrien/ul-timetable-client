@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Lesson} from '../types/lesson';
+import {Lesson} from '../../types/lesson';
 import {MdDialog} from '@angular/material';
 import {LessonInfoDialogComponent} from '../lesson-info-dialog/lesson-info-dialog.component';
 

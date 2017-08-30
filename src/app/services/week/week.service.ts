@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {IWeek, Week} from './types/week';
+import {IWeek, Week} from '../../types/week';
 
 const WeeksQuery = gql`
   query WeeksQuery {

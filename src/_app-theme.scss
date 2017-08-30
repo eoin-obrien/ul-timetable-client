@@ -1,8 +1,8 @@
 @import '~@angular/material/theming';
-@import './app/footer/footer-theme';
-@import './app/homepage/homepage-theme';
-@import './app/timetable/timetable-theme';
-@import './app/timetable-column/timetable-column-theme';
+@import 'app/components/footer/footer-theme';
+@import 'app/pages/homepage/homepage-theme';
+@import 'app/pages/timetable/timetable-theme';
+@import 'app/components/timetable-column/timetable-column-theme';
 
 @include mat-core();
 
