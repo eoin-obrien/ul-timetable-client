@@ -12,6 +12,9 @@
     <md-grid-tile class="timetable-cell"
                   colspan="1"
                   [rowspan]="lesson.getDuration()">
+      <div class="timetable-cell__backdrop"
+           [ngStyle]="{'background-color': moduleColors[lesson.module._id]}">
+      </div>
       <div class="timetable-cell__sidebar"
            fxLayoutAlign="center center"
            [ngSwitch]="lesson.type"

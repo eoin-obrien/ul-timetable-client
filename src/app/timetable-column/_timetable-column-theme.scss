@@ -9,9 +9,5 @@
     .timetable-cell__subtitle {
       color: mat-color($mat-grey, 600);
     }
-
-    .timetable-cell:not(.timetable-cell--empty) {
-      background-color: mat-color($mat-grey, 100);
-    }
   }
 }
