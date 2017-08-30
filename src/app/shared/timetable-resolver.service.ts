@@ -25,7 +25,7 @@ export class TimetableResolver implements Resolve<TimetableData> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<TimetableData> {
     const data: TimetableData = {
       studentId: route.paramMap.get('id'),
-      weekId: route.paramMap.get('currentWeek'),
+      weekId: route.paramMap.get('week'),
       weeks: null,
       timetable: null,
     };

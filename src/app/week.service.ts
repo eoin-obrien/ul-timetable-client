@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Apollo, ApolloQueryObservable} from 'apollo-angular';
+import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {IWeek, Week} from './types/week';
-import {Observable} from 'rxjs/Observable';
-import {ApolloQueryResult} from 'apollo-client';
 
 const WeeksQuery = gql`
   query WeeksQuery {
