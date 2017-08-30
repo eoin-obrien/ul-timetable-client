@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Apollo, ApolloQueryObservable} from 'apollo-angular';
+import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {ITimetable, Timetable} from './types/timetable';
+import {ITimetable, Timetable} from '../../types/timetable';
 
 const TimetableQuery = gql`
   query TimetableQuery($studentId: ID!, $weekId: String!) {

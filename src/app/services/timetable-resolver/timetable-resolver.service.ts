@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
-import {WeekService} from '../week.service';
-import {Week} from '../types/week';
-import {Timetable} from '../types/timetable';
-import {TimetableService} from '../timetable.service';
+import {WeekService} from '../week/week.service';
+import {Week} from '../../types/week';
+import {Timetable} from '../../types/timetable';
+import {TimetableService} from '../timetable/timetable.service';
 
 interface TimetableData {
   studentId: string;
@@ -25,7 +25,7 @@ export class TimetableResolver implements Resolve<TimetableData> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<TimetableData> {
     const data: TimetableData = {
       studentId: route.paramMap.get('id'),
-      weekId: route.paramMap.get('currentWeek'),
+      weekId: route.paramMap.get('week'),
       weeks: null,
       timetable: null,
     };

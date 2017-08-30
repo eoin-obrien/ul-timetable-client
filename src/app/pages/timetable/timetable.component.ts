@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Timetable} from '../types/timetable';
-import {Week} from '../types/week';
-import {ModuleColorService} from '../module-color.service';
+import {ActivatedRoute} from '@angular/router';
+import {Timetable} from '../../types/timetable';
+import {Week} from '../../types/week';
+import {ModuleColorService} from '../../services/module-color/module-color.service';
 
 @Component({
   selector: 'app-timetable',
@@ -72,9 +72,13 @@ export class TimetableComponent implements OnInit {
     this.weekIndex = lastIndex;
     if (this.weekIndex - 1 >= 0) {
       this.previousWeek = this.weeks[this.weekIndex - 1];
+    } else {
+      this.previousWeek = null;
     }
     if (this.weekIndex + 1 < this.weeks.length) {
       this.nextWeek = this.weeks[this.weekIndex + 1];
+    } else {
+      this.nextWeek = null;
     }
   }
 

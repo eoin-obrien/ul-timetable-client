@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
-import {Lesson} from '../types/lesson';
+import {Lesson} from '../../types/lesson';
 
 @Component({
   selector: 'app-lesson-info-dialog',
