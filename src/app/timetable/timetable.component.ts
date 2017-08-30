@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {TimetableService} from '../timetable.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Timetable} from '../types/timetable';
 import {Week} from '../types/week';
 import {ModuleColorService} from '../module-color.service';
-import {WeekService} from '../week.service';
 
 @Component({
   selector: 'app-timetable',
@@ -12,10 +10,13 @@ import {WeekService} from '../week.service';
   styleUrls: ['./timetable.component.scss']
 })
 export class TimetableComponent implements OnInit {
+  loading = true;
   studentId: string;
   weekId: string;
   weekIndex: number;
-  week: Week;
+  currentWeek: Week;
+  previousWeek: Week;
+  nextWeek: Week;
   timetable: Timetable;
   weeks: Week[];
   colors;
@@ -46,16 +47,11 @@ export class TimetableComponent implements OnInit {
     '18:00',
   ];
 
-  constructor(
-    private ts: TimetableService,
-    private ws: WeekService,
-    private cs: ModuleColorService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor(private cs: ModuleColorService,
+              private route: ActivatedRoute) {
   }
 
-  getModules() {
+  getModuleColors() {
     const modules = [];
     this.timetable.toArray().forEach(day => {
       day.forEach(lesson => {
@@ -64,57 +60,33 @@ export class TimetableComponent implements OnInit {
         }
       });
     });
-    return modules;
+    this.colors = this.cs.getColorMap(this.studentId, modules);
   }
 
   resolveWeek() {
     let lastIndex = 0;
-    if (this.weekId) {
-      this.week = this.weeks.find((week, i) => {
-        lastIndex = i;
-        return week._id === this.weekId;
-      });
-      if (!this.week) {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate(['/timetable', {id: this.studentId}]);
-      }
-      this.weekIndex = lastIndex;
-    } else {
-      const now = new Date();
-      this.week = this.weeks.slice().reverse().find((week, i) => {
-        lastIndex = i;
-        return week.date < now;
-      });
-      if (!this.week) {
-        lastIndex = 0;
-        this.week = this.weeks[0];
-      }
-      this.weekIndex = lastIndex;
+    this.currentWeek = this.weeks.find((week, i) => {
+      lastIndex = i;
+      return week._id === this.weekId;
+    });
+    this.weekIndex = lastIndex;
+    if (this.weekIndex - 1 >= 0) {
+      this.previousWeek = this.weeks[this.weekIndex - 1];
+    }
+    if (this.weekIndex + 1 < this.weeks.length) {
+      this.nextWeek = this.weeks[this.weekIndex + 1];
     }
   }
 
-  getTimetable() {
-    this.timetable = undefined;
-    this.ts.getTimetable(this.studentId, this.week._id)
-      .subscribe(({data}) => {
-        this.timetable = new Timetable(data.timetable);
-        this.colors = this.cs.getColorMap(this.studentId, this.getModules());
-      });
-  }
-
-  getWeeks() {
-    this.ws.getWeeks().subscribe(({data}) => {
-      this.weeks = data.weeks.map(week => new Week(week));
-      this.resolveWeek();
-      this.getTimetable();
-    });
-  }
-
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.studentId = params['id'];
-      this.weekId = params['week'];
-      this.getWeeks();
+    this.route.data.subscribe(({timetable}) => {
+      this.studentId = timetable.studentId;
+      this.weekId = timetable.weekId;
+      this.timetable = timetable.timetable;
+      this.weeks = timetable.weeks;
+      this.resolveWeek();
+      this.getModuleColors();
+      this.loading = false;
     });
   }
 

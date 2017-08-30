@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Apollo, ApolloQueryObservable} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {ITimetable} from './types/timetable';
+import {ITimetable, Timetable} from './types/timetable';
 
 const TimetableQuery = gql`
   query TimetableQuery($studentId: ID!, $weekId: String!) {
@@ -59,13 +59,20 @@ export class TimetableService {
   constructor(private apollo: Apollo) {
   }
 
-  getTimetable(studentId: string, weekId: string): ApolloQueryObservable<QueryResponse> {
-    return this.apollo.watchQuery<QueryResponse>({
+  getTimetable(studentId: string, weekId: string): Promise<Timetable> {
+    let timetable = null;
+    return this.apollo.query<QueryResponse>({
       query: TimetableQuery,
       variables: {
         studentId,
         weekId,
       }
+    }).forEach(({data}) => {
+      if (data.timetable) {
+        timetable = new Timetable(data.timetable);
+      }
+    }).then(() => {
+      return timetable;
     });
   }
 }

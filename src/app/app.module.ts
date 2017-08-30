@@ -17,7 +17,7 @@ import {FooterComponent} from './footer/footer.component';
 import {HomepageComponent} from './homepage/homepage.component';
 import {TimetableComponent} from './timetable/timetable.component';
 import {StudentIdValidatorDirective} from './shared/student-id-validator.directive';
-import {TimetableGuard} from './shared/timetable.guard';
+import {TimetableResolver} from './shared/timetable-resolver.service';
 import {TimetableService} from './timetable.service';
 import {WeekService} from './week.service';
 import {TimetableColumnComponent} from './timetable-column/timetable-column.component';
@@ -59,7 +59,7 @@ export function provideClient(): ApolloClient {
     ApolloModule.forRoot(provideClient),
   ],
   providers: [
-    TimetableGuard,
+    TimetableResolver,
     TimetableService,
     WeekService,
     ModuleColorService,
