@@ -1,0 +1,16 @@
+.time-column {
+  margin: 12px 0;
+}
+.time-column, app-timetable-column {
+  padding: 12px 0;
+}
+
+.timetable-title {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.pagination-button--back, .pagination-button--forward {
+  width: 40px;
+  margin: 0 4px;
+}

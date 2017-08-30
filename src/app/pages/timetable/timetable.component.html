@@ -1,0 +1,101 @@
+<!--TODO extract grid dimensions as template variables-->
+
+<div fxLayout="column" *ngIf="!loading" fxFlex>
+
+  <!-- Common toolbar -->
+  <md-toolbar color="primary">
+    <div class="pagination-button--back">
+      <a md-icon-button
+         md-tooltip="Previous week"
+         *ngIf="previousWeek"
+         [routerLink]="['/timetable', {id: this.studentId, week: previousWeek._id}]">
+        <md-icon>arrow_back</md-icon>
+      </a>
+    </div>
+    <span fxFlex></span>
+    <span>{{currentWeek.name}}</span>
+    <span fxFlex></span>
+    <div class="pagination-button--forward">
+      <a md-icon-button
+         md-tooltip="Next week"
+         *ngIf="nextWeek"
+         [routerLink]="['/timetable', {id: this.studentId, week: nextWeek._id}]">
+        <md-icon>arrow_forward</md-icon>
+      </a>
+    </div>
+  </md-toolbar>
+
+
+
+  <!-- Desktop Layout -->
+  <div class="mat-tab-nav-bar" fxHide.lt-md>
+    <md-grid-list class="mat-tab-list" cols="1" rowHeight="48px" gutterSize="0px" fxFlex="72px">
+      <md-grid-tile class="mat-tab-link"
+                    colspan="1"
+                    rowspan="1">
+      </md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list class="mat-tab-list" cols="5" rowHeight="56px" gutterSize="0px" fxFlex>
+      <md-grid-tile class="mat-tab-link"
+                    *ngFor="let day of days"
+                    colspan="1"
+                    rowspan="1">
+        {{day}}
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+
+  <div class="timetable-body" fxLayout="row" fxHide.lt-md>
+
+    <md-grid-list class="time-column"
+                  cols="1"
+                  gutterSize="8px"
+                  rowHeight="76px"
+                  fxFlex="72px">
+      <md-grid-tile
+        *ngFor="let time of times"
+        colspan="1"
+        rowspan="1">
+        {{time}}
+      </md-grid-tile>
+    </md-grid-list>
+
+    <app-timetable-column *ngFor="let day of timetable.toArray(); let i = index"
+                          [day]="this.days[i]"
+                          [lessons]="day"
+                          [moduleColors]="colors"
+                          style="width: 20%"></app-timetable-column>
+
+  </div>
+
+
+
+  <!-- Mobile layout -->
+  <md-tab-group fxHide.gt-sm>
+    <md-tab *ngFor="let day of timetable.toArray(); let i = index" [label]="shortDays[i]">
+
+      <div class="timetable-body" fxLayout="row">
+
+        <md-grid-list class="time-column"
+                      cols="1"
+                      gutterSize="8px"
+                      rowHeight="76px"
+                      fxFlex="72px">
+          <md-grid-tile
+            *ngFor="let time of times"
+            colspan="1"
+            rowspan="1">
+            {{time}}
+          </md-grid-tile>
+        </md-grid-list>
+
+        <app-timetable-column [day]="this.days[i]" [lessons]="day" [moduleColors]="colors"
+                              style="width: 100%"></app-timetable-column>
+
+      </div>
+
+    </md-tab>
+  </md-tab-group>
+
+</div>

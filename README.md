@@ -26,3 +26,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## License
+
+The source code of this project is licensed under the GUN GPL v3.0.
+Logos, brands and other assets are proprietary, remain the property of their respective owners, and thus not licensed for use of any kind.

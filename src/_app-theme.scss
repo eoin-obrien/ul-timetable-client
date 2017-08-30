@@ -1,6 +1,8 @@
 @import '~@angular/material/theming';
-@import './app/footer/footer-theme';
-@import './app/timetable/timetable-theme';
+@import 'app/components/footer/footer-theme';
+@import 'app/pages/homepage/homepage-theme';
+@import 'app/pages/timetable/timetable-theme';
+@import 'app/components/timetable-column/timetable-column-theme';
 
 @include mat-core();
 
@@ -30,10 +32,16 @@ body {
   }
 }
 
+.loading-spinner {
+  background: mat-color($background, background);
+}
+
 .timetable-footer {
   background: mat-color($primary);
   color: mat-color($primary, default-contrast);
 }
 
 @include footer-theme($timetable-app-theme);
+@include homepage-theme($timetable-app-theme);
 @include timetable-theme($timetable-app-theme);
+@include timetable-column-theme($timetable-app-theme);

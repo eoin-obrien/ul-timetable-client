@@ -2,7 +2,18 @@ app-navbar {
   z-index: 999;
 }
 
-router-outlet {
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.loading-spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
 }
 
 :host /deep/ router-outlet + * {

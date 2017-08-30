@@ -1,0 +1,18 @@
+@mixin timetable-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-timetable {
+    .timetable-page-header {
+      color: mat-color($primary, default-contrast);
+      background-color: mat-color($primary);
+    }
+
+    .time-column, app-timetable-column {
+      border-left: thin mat-color($mat-grey, 300) solid;
+    }
+  }
+}

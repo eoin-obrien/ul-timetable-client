@@ -8,21 +8,21 @@ import {ApolloClient, createNetworkInterface} from 'apollo-client';
 import {ApolloModule} from 'apollo-angular';
 import 'hammerjs';
 
-import {MaterialModule} from './material/material.module';
-import {routing} from './routes';
+import {MaterialModule} from './material.module';
+import {routing} from './routes.module';
 
 import {AppComponent} from './app.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {FooterComponent} from './footer/footer.component';
-import {HomepageComponent} from './homepage/homepage.component';
-import {TimetableComponent} from './timetable/timetable.component';
-import {StudentIdValidatorDirective} from './shared/student-id-validator.directive';
-import {TimetableGuard} from './shared/timetable.guard';
-import {TimetableService} from './timetable.service';
-import {WeekService} from './week.service';
-import {TimetableColumnComponent} from './timetable-column/timetable-column.component';
-import {ModuleColorService} from './module-color.service';
-import {LessonInfoDialogComponent} from './lesson-info-dialog/lesson-info-dialog.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {HomepageComponent} from './pages/homepage/homepage.component';
+import {TimetableComponent} from './pages/timetable/timetable.component';
+import {StudentIdValidatorDirective} from './validators/student-id-validator/student-id-validator.directive';
+import {TimetableResolver} from './services/timetable-resolver/timetable-resolver.service';
+import {TimetableService} from './services/timetable/timetable.service';
+import {WeekService} from './services/week/week.service';
+import {TimetableColumnComponent} from './components/timetable-column/timetable-column.component';
+import {ModuleColorService} from './services/module-color/module-color.service';
+import {LessonInfoDialogComponent} from './components/lesson-info-dialog/lesson-info-dialog.component';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -59,7 +59,7 @@ export function provideClient(): ApolloClient {
     ApolloModule.forRoot(provideClient),
   ],
   providers: [
-    TimetableGuard,
+    TimetableResolver,
     TimetableService,
     WeekService,
     ModuleColorService,
