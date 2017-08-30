@@ -1,25 +1,25 @@
 <!--TODO extract grid dimensions as template variables-->
 
-<div fxLayout="column" *ngIf="timetable" fxFlex>
+<div fxLayout="column" *ngIf="!loading" fxFlex>
 
   <!-- Common toolbar -->
   <md-toolbar color="primary">
     <div class="pagination-button--back">
       <a md-icon-button
          md-tooltip="Previous week"
-         *ngIf="weekIndex - 1 >= 0"
-         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
+         *ngIf="previousWeek"
+         [routerLink]="['/timetable', {id: this.studentId, week: previousWeek._id}]">
         <md-icon>arrow_back</md-icon>
       </a>
     </div>
     <span fxFlex></span>
-    <span>{{week.name}}</span>
+    <span>{{currentWeek.name}}</span>
     <span fxFlex></span>
     <div class="pagination-button--forward">
       <a md-icon-button
          md-tooltip="Next week"
-         *ngIf="weekIndex + 1 < weeks.length"
-         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
+         *ngIf="nextWeek"
+         [routerLink]="['/timetable', {id: this.studentId, week: nextWeek._id}]">
         <md-icon>arrow_forward</md-icon>
       </a>
     </div>

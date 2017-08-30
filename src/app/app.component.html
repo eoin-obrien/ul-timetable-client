@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
+<div class="loading-spinner" *ngIf="loading" fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
+  <md-spinner></md-spinner>
+</div>
 <div class="app-container">
-  <div *ngIf="loading" fxLayout="row" fxLayoutAlign="center center" fxFlex>
-    <md-spinner></md-spinner>
-  </div>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
