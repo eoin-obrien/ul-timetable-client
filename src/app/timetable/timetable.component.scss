@@ -3,19 +3,14 @@
 }
 .time-column, app-timetable-column {
   padding: 12px 0;
-  border-left: thin lightgray solid;
 }
 
-.pagination-button--back {
-  position: absolute;
-  margin-left: 16px;
-  left: 0;
-
+.timetable-title {
+  font-size: 30px;
+  font-weight: 400;
 }
 
-.pagination-button--forward {
-  position: absolute;
-  margin-right: 16px;
-  right: 0;
-
+.pagination-button--back, .pagination-button--forward {
+  width: 40px;
+  margin: 0 4px;
 }

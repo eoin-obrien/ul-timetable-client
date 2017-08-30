@@ -7,22 +7,26 @@
 
 <div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.gt-sm fxFlex>
 
-  <md-toolbar color="primary" fxFlex>
-    <a md-icon-button class="pagination-button--back"
-       md-tooltip="Previous week"
-       *ngIf="weekIndex - 1 >= 0"
-       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
-      <md-icon>arrow_back</md-icon>
-    </a>
+  <md-toolbar color="primary">
+    <div class="pagination-button--back">
+      <a md-icon-button
+         md-tooltip="Previous week"
+         *ngIf="weekIndex - 1 >= 0"
+         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
+        <md-icon>arrow_back</md-icon>
+      </a>
+    </div>
     <span fxFlex></span>
     <span>{{week.name}}</span>
     <span fxFlex></span>
-    <a md-icon-button class="pagination-button--forward"
-       md-tooltip="Next week"
-       *ngIf="weekIndex + 1 < weeks.length"
-       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
-      <md-icon>arrow_forward</md-icon>
-    </a>
+    <div class="pagination-button--forward">
+      <a md-icon-button
+         md-tooltip="Next week"
+         *ngIf="weekIndex + 1 < weeks.length"
+         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
+        <md-icon>arrow_forward</md-icon>
+      </a>
+    </div>
   </md-toolbar>
 
   <div class="mat-tab-nav-bar">
@@ -70,22 +74,26 @@
 
 <div fxLayout="column" *ngIf="timetable" fxShow="false" fxShow.lt-md fxFlex>
 
-  <md-toolbar color="primary" fxFlex>
-    <a md-icon-button class="pagination-button--back"
-       md-tooltip="Previous week"
-       *ngIf="weekIndex - 1 >= 0"
-       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
-      <md-icon>arrow_back</md-icon>
-    </a>
+  <md-toolbar color="primary">
+    <div class="pagination-button--back">
+      <a md-icon-button
+         md-tooltip="Previous week"
+         *ngIf="weekIndex - 1 >= 0"
+         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex - 1]._id}]">
+        <md-icon>arrow_back</md-icon>
+      </a>
+    </div>
     <span fxFlex></span>
     <span>{{week.name}}</span>
     <span fxFlex></span>
-    <a md-icon-button class="pagination-button--forward"
-       md-tooltip="Next week"
-       *ngIf="weekIndex + 1 < weeks.length"
-       [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
-      <md-icon>arrow_forward</md-icon>
-    </a>
+    <div class="pagination-button--forward">
+      <a md-icon-button
+         md-tooltip="Next week"
+         *ngIf="weekIndex + 1 < weeks.length"
+         [routerLink]="['/timetable', {id: this.studentId, week: weeks[weekIndex + 1]._id}]">
+        <md-icon>arrow_forward</md-icon>
+      </a>
+    </div>
   </md-toolbar>
 
   <md-tab-group>
