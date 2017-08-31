@@ -13,6 +13,7 @@ const APP_ROUTES: Routes = [
   {
     path: 'timetable',
     component: TimetableComponent,
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     resolve: {
       timetable: TimetableResolver,
     }

@@ -63,6 +63,7 @@ export class TimetableService {
     let timetable = null;
     return this.apollo.query<QueryResponse>({
       query: TimetableQuery,
+      fetchPolicy: 'network-only',
       variables: {
         studentId,
         weekId,
